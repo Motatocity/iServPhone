@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7">
-                    <div class="header-content">
+                    <div class="header-content" style="padding-top: 10%;padding-bottom: 150%;">
                         <div class="header-content-inner">
                             <div class="col-xs-12 col-md-12">
                                 <h1 style="margin-bottom: 10px;">Unlock HIMS Username</h1> 
@@ -63,7 +63,7 @@
                                     <h3 id="txtuser" name="txtuser">PIYAWATM</h3>
                                     <h5>Are you sure to unlock?</h5>
                                     <form>
-                                        <input type="submit" class="btn btn-outline btn-xl page-scroll" value="Unlock!">
+                                        <input type="button" name="btngo" id="btngo" class="btn btn-outline btn-xl page-scroll" value="Unlock!">
                                     </form>
                                   </div>
                                 </div>
@@ -132,22 +132,33 @@
         });
         
         // Submit Data
-        $('form').submit(function(){
-            var username =  $("#txtuser").html();
+        $('#btngo').click(function(){
+            var username =  $("#usern").val();
             var userreq =  $("#displayname").val();
-            $.ajax({
-                type: 'GET',
-                url: 'http://49.231.150.237/iServ/unlock.php?userlock='+username+'&userreq='+userreq,
-                success: function(data){
-                    console.log(data);
+			var strurl = 'http://49.231.150.237/iServ/unlock.php';
+
+				$.ajax({
+						url: strurl,
+						data: {'userlock':username,'userreq':userreq.replace(' ','%20')},
+                        type: 'POST',
+						dataType: "json",
+						success: successAll,
+						error: ErrorAll
+					});
+
+				function successAll(data){
+					console.log(data[0]);
+					//alert(data[0]['check_login']);
                     //alert('Your comment was successfully added');
-                    window.location.href = "complete.html";
-                },
-                error: function(data){
-                    console.log(data);
-                    //alert('There was an error adding your comment');
-                }
-            });
+                    window.location.href = "index.html";
+				}
+				
+				function ErrorAll(data){
+					console.log(data[0]);
+					//alert(data[0]['check_login']);
+                    alert('Connection Fail.');
+                    //window.location.href = "index.html";
+				}
         });
     </script>
 
