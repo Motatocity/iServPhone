@@ -1,0 +1,27 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "xdk.rajyindee.iserv"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "xdk.rajyindee.iserv"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "xdk.rajyindee.iserv"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "xdk.rajyindee.iserv"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "xdk.rajyindee.iserv"
+        }
+    },
+    "dependent_plugins": {}
+}
